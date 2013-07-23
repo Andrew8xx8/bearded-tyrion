@@ -1,6 +1,10 @@
 !!!
 %html
   %head
-    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=UTF-8'}
+    %title Bearded Tyrion: Tweets downloader
+    %meta{ 'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=UTF-8' }
+    %link{ href: "css/bootstrap.min.css", rel: "stylesheet", media: "screen" }
   %body
     = yield
+    %script{ src:"http://code.jquery.com/jquery.js" }
+    %script{ src:"js/bootstrap.min.js" }

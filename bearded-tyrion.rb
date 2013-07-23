@@ -8,6 +8,8 @@ require './logic.rb'
 set :haml, {:format => :html5, :attr_wrapper => '"'}
 
 configure do
+  set :public_folder, File.dirname(__FILE__) + '/public'
+
   enable :sessions
 
   use OmniAuth::Builder do

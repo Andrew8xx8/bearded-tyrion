@@ -2,9 +2,28 @@
 %html
   %head
     %title Bearded Tyrion: Tweets downloader
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta{ 'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=UTF-8' }
     %link{ href: "css/bootstrap.min.css", rel: "stylesheet", media: "screen" }
   %body
-    = yield
+    .container
+      .row
+        .span12
+          .hero-unit.hidden-phone
+            %h1 Bearded Tyrion
+            %p
+              Easy way to download your tweets
+            - if current_user
+            - else
+              %p
+                %a.btn.btn-large.btn-inverse{:href => "/auth/twitter"}
+                  %span.btn-label Sign In with Twitter to continue
+          = yield
+
+      %footer
+        %p 
+          &copy;
+          %a{href: "http://8xx8.ru"}
+            8xx8
     %script{ src:"http://code.jquery.com/jquery.js" }
     %script{ src:"js/bootstrap.min.js" }

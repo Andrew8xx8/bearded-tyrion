@@ -31,5 +31,5 @@ get '/auth/failure' do
 end
 
 get '/' do
-  haml :index
+  haml :index, locals: { current_user: "" }
 end

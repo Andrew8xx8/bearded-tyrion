@@ -2,13 +2,14 @@ require 'sinatra'
 require 'omniauth-twitter'
 require 'awesome_print'
 require 'twitter'
+require 'haml'
 require './logic.rb'
+
+set :haml, {:format => :html5, :attr_wrapper => '"'}
 
 configure do
   enable :sessions
-end
 
-configure :development do
   use OmniAuth::Builder do
     provider :twitter, consumer_key, consumer_secret
   end
@@ -28,12 +29,5 @@ get '/auth/failure' do
 end
 
 get '/' do
-  client = twitter_client
-
-  ap client
-  ap session[:auth]
-
-  if client
-    client.friends
-  end
+  haml :index
 end

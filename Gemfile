@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'foreman'
 gem 'omniauth'
+gem 'wrong'
 gem 'omniauth-twitter'
 gem 'rack', "~> 1.3.6"
 gem 'sinatra'
-gem 'thin'
+gem 'unicorn'
 gem 'twitter'
 gem 'awesome_print'
 gem 'haml'

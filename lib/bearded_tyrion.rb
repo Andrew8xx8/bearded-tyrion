@@ -1,4 +1,10 @@
+require 'sinatra'
+require 'omniauth-twitter'
+require 'awesome_print'
+require 'twitter'
+require 'haml'
+
 module BeardedTyrion
-  autoload 'User', 'bearded_tyrion/user'
-  autoload 'UserPopulator', 'bearded_tyrion/user_populator'
+  autoload 'Web', File.expand_path('../bearded_tyrion/web', __FILE__)
+  autoload 'User', File.expand_path('../bearded_tyrion/user', __FILE__)
 end

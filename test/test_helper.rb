@@ -1,7 +1,8 @@
 require 'bundler/setup'
 Bundler.require
 
-require 'minitest/unit'
+require File.expand_path('../../lib/bearded_tyrion', __FILE__)
+
 require 'minitest/pride'
 
-MiniTest::Unit.autorun
+MiniTest.autorun

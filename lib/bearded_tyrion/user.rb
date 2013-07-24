@@ -7,4 +7,13 @@ class BeardedTyrion::User
     @token = attrs[:token]
     @secret = attrs[:secret]
   end
+
+  def to_session
+    {
+      name:   @name,
+      image:  @image,
+      token:  @token,
+      secret: @secret
+    }
+  end
 end

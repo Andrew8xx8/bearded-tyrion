@@ -5,9 +5,11 @@ require 'twitter'
 require 'haml'
 
 module BeardedTyrion
-  autoload 'Web', File.expand_path('../bearded_tyrion/web', __FILE__)
-  autoload 'Twitter', File.expand_path('../bearded_tyrion/twitter', __FILE__)
-  autoload 'User', File.expand_path('../bearded_tyrion/user', __FILE__)
+  autoload :Source, File.expand_path('../bearded_tyrion/source', __FILE__)
+  autoload :Content, File.expand_path('../bearded_tyrion/content', __FILE__)
+  autoload :Web, File.expand_path('../bearded_tyrion/web', __FILE__)
+  autoload :Twitter, File.expand_path('../bearded_tyrion/twitter', __FILE__)
+  autoload :User, File.expand_path('../bearded_tyrion/user', __FILE__)
 
   class << self
     def consumer_key

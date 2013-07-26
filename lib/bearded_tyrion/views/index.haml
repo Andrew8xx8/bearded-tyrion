@@ -1,4 +1,4 @@
-%form
+%form{method: "POST", action: "/download"}
   -#.alert
     -#%button.close{"data-dismiss" => "alert", :type => "button"} ×
     -#%b Warning!
@@ -19,13 +19,13 @@
   .control-group
     .controls
       %label.checkbox{:for => "content_id"}
-        %input#content_id{:name => "content", :type => "checkbox", :value => "id", :checked => "checked"}/
+        %input#content_id{:name => "content[]", :type => "checkbox", :value => "id", :checked => "checked"}/
         ID
       %label.checkbox{:for => "content_message"}
-        %input#content_message{:name => "content", :type => "checkbox", :value => "message", :checked => "checked"}/
+        %input#content_message{:name => "content[]", :type => "checkbox", :value => "message", :checked => "checked"}/
         Message
       %label.checkbox{:for => "content_time"}
-        %input#content_time{:name => "content", :type => "checkbox", :value => "time", :checked => "checked"}/
+        %input#content_time{:name => "content[]", :type => "checkbox", :value => "time", :checked => "checked"}/
         Date/Time
 
   %h1 Format
@@ -35,4 +35,4 @@
         %input#format_plain_text{:name => "format", :type => "radio", :value => "plain_text", :checked => "checked"}/
         Plain text
 
-  %a.btn.btn-success.btn-large Download
+  %input.btn.btn-success.btn-large{type: :submit, value: "Download"}

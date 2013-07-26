@@ -1,0 +1,2 @@
+class BeardedTyrion::Twitter
+end

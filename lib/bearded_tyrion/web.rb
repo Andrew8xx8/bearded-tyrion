@@ -47,4 +47,8 @@ class BeardedTyrion::Web < Sinatra::Base
 
     haml :index, locals: { current_user: current_user }
   end
+
+  post '/download' do
+    ap params
+  end
 end

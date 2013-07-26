@@ -5,6 +5,7 @@
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta{ 'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=UTF-8' }
     %link{ href: "css/bootstrap.min.css", rel: "stylesheet", media: "screen" }
+    %link{ href: "css/bt.css", rel: "stylesheet", media: "screen" }
   %body
     .container
       .row
@@ -14,6 +15,11 @@
             %p
               Easy way to download your tweets
             - if current_user
+              %p
+                %h4="Hello! #{current_user.name}"
+                %img{src:current_user.image}
+                %a.btn.btn-large.btn-inverse{:href => "/auth/signout"}
+                  %span.btn-label Sign Out
             - else
               %p
                 %a.btn.btn-large.btn-inverse{:href => "/auth/twitter"}

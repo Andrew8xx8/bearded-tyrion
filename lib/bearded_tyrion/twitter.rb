@@ -1,25 +1,18 @@
 class BeardedTyrion::Twitter
-  def consumer_key
-    raise "Missing CONSUMER_KEY in ENV!" unless ENV["CONSUMER_KEY"]
+  def initialize(user)
+    return nil unless user
 
-    ENV["CONSUMER_KEY"]
-  end
+    Twitter.configure do |config|
+      config.consumer_key = BeardedTyrion.consumer_key
+      config.consumer_secret = BeardedTyrion.consumer_secret
+      config.oauth_token = user.token
+      config.oauth_token_secret = user.secret
+      config.connection_options = Twitter::Default::CONNECTION_OPTIONS.merge(:request => { 
+        :open_timeout => 5,
+        :timeout => 10
+      })
+    end
 
-  def consumer_secret
-    raise "Missing CONSUMER_SECRET in ENV!" unless ENV["CONSUMER_SECRET"]
-
-    ENV["CONSUMER_SECRET"]
-  end
-
-  def oauth_token
-    return nil unless session.has_key?( :auth ) && session[:auth].has_key?( :token )
-
-    session[:auth][:token]
-  end
-
-  def oauth_token_secret
-    return nil unless session.has_key?( :auth ) && session[:auth].has_key?( :secret )
-
-    session[:auth][:secret]
+    Twitter
   end
 end

@@ -6,28 +6,25 @@
   %h1 Source
   .control-group
     .controls
-      %label.radio{:for => "home_timeline"}
-        %input#home_timeline{:name => "source", :type => "radio", :value => "home_timeline", :checked => "checked"}/
-        My Home Timeline
-      %label.radio{:for => "mentions"}
-        %input#mentions{:name => "source", :type => "radio", :value => "mentions"}/
-        Mentinons
-      %label.radio{:for => "direct_messages"}
-        %input#direct_messages{:name => "source", :type => "radio", :value => "direct_messages"}/
-        Direct Messages
+      - source.available_options.each do |option|
+        %label.radio{:for => "#{source.form_field_name}_#{option}"}
+          %input{:id => "#{source.form_field_name}_#{option}", :name => "#{source.form_field_name}[]", :type => "radio", :value => option.to_s}
+            = option.to_s.humanize
+
   %h1 Content
   .control-group
     .controls
-      = BeardedTyrion::Content.available_option.each do |options|
-        %label.checkbox{:for => "#{BeardedTyrion::Content.form_field_name}_#{options.name}"}
-          %input#content_id{:name => "#{BeardedTyrion::Content.form_field_name}[]", :type => "checkbox", :value => "#{options.name}", :checked => "checked"}/
-            = options.description
+      - content.available_options.each do |option|
+        %label.checkbox{:for => "#{content.form_field_name}_#{option}"}
+          %input{:id => "#{content.form_field_name}_#{option}", :name => "#{content.form_field_name}[]", :type => "checkbox", :value => option.to_s, :checked => "checked"}
+            = option.to_s.humanize
 
   %h1 Format
   .control-group
     .controls
-      %label.radio{:for => "format_plain_text"}
-        %input#format_plain_text{:name => "format", :type => "radio", :value => "plain_text", :checked => "checked"}/
-        Plain text
+      - format.available_options.each do |option|
+        %label.radio{:for => "#{format.form_field_name}_#{option}"}
+          %input{:id => "#{format.form_field_name}_#{option}", :name => "#{format.form_field_name}[]", :type => "radio", :value => option.to_s}
+            = option.to_s.humanize
 
   %input.btn.btn-success.btn-large{type: :submit, value: "Download"}

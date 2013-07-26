@@ -10,7 +10,8 @@ class BeardedTyrion::ContentTest < MiniTest::Test
       ]
     }
 
-    content = BeardedTyrion::Content.new(params)
+    content = BeardedTyrion::Content.new
+    content.fill_params(params)
 
     assert content.fields == [:id, :message]
   end

@@ -44,8 +44,16 @@ class BeardedTyrion::Web < Sinatra::Base
   get '/' do
     current_user = BeardedTyrion::User.populate_from_session(session)
     twitter = BeardedTyrion::Twitter.new(current_user)
+    content = BeardedTyrion::Content.new
+    source = BeardedTyrion::Source.new
+    format = BeardedTyrion::Format.new
 
-    haml :index, locals: { current_user: current_user }
+    haml :index, locals: {
+      current_user: current_user,
+      content: content,
+      source: source,
+      format: format
+    }
   end
 
   post '/download' do

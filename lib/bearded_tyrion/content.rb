@@ -1,17 +1,22 @@
 class BeardedTyrion::Content
   attr_reader :fields
+  class << self
+    def available_options
+      [
+        { name: :id, value: "ID" },
+        { name: :message, value: "Message" },
+        { name: :date, value: "Date/Time" }
+      ]
+    end
 
-  def self.available_options
-    [
-      { name: :id, value: "ID" },
-      { name: :message, value: "Message" },
-      { name: :date, value: "Date/Time" }
-    ]
+    def form_field_name
+      "content"
+    end
   end
 
   def initialize(form_hash)
     @fields = []
-    fill_fields(form_hash["content"])
+    fill_fields(form_hash[BeardedTyrion::Content.form_field_name])
   end
 
   private

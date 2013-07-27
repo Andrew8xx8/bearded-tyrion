@@ -7,29 +7,39 @@
     %link{ href: "css/bootstrap.min.css", rel: "stylesheet", media: "screen" }
     %link{ href: "css/bt.css", rel: "stylesheet", media: "screen" }
   %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        %a.navbar-brand{href: root_path}
+          Bearded Tyrion
+        %p.navbar-text
+          Tweets downloader
+        - if current_user
+          %p.navbar-text.pull-right
+            Signed in as #{current_user.name}
+            %img.bt-avatar{src:current_user.image}
+            %a{href: "/auth/signout"}
+              Sign Out
+        - else
+          %p.navbar-text.pull-right
+            %a{href: "/auth/twitter"}
+              Sign In with Twitter
+    %p
+      &nbsp;
+    %p
+      &nbsp;
     .container
-      .row
-        .span12
-          .hero-unit.hidden-phone
-            %h1 Bearded Tyrion
-            %p
-              Easy way to download your tweets
-            - if current_user
-              %p
-                %h4="Hello! #{current_user.name}"
-                %img{src:current_user.image}
-                %a.btn.btn-large.btn-inverse{:href => "/auth/signout"}
-                  %span.btn-label Sign Out
-            - else
-              %p
-                %a.btn.btn-large.btn-inverse{:href => "/auth/twitter"}
-                  %span.btn-label Sign In with Twitter to continue
-          = yield
+      .row.bt-row
+        .bt-inner
+          .col-lg-8
+            = yield
 
-      %footer
-        %p 
-          &copy;
+    %a.bt-top.affix{href: "#"}
+      Back to top
+
+    %footer.bt-footer
+      %ul.footer-links
+        %li
           %a{href: "http://8xx8.ru"}
-            8xx8
+            &copy; 8xx8
     %script{ src:"http://code.jquery.com/jquery.js" }
     %script{ src:"js/bootstrap.min.js" }

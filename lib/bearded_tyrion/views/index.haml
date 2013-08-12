@@ -6,6 +6,11 @@
   %h1 Source
   .control-group
     .controls
+      - BeardedTyrion::Form.source.values.each do |option|
+        p option
+  %h1 Source
+  .control-group
+    .controls
       - source.available_options.each do |option|
         %label.radio{:for => "#{source.form_field_name}_#{option}"}
           %input{:id => "#{source.form_field_name}_#{option}", :name => "#{source.form_field_name}[]", :type => "radio", :value => option.to_s}

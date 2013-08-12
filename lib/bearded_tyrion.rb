@@ -1,18 +1,24 @@
+$:.unshift File.dirname(__FILE__)
+
 require 'sinatra'
 require 'omniauth-twitter'
 require 'awesome_print'
 require 'twitter'
 require 'haml'
+require 'active_model'
 require 'active_support/inflector'
+require 'active_support/core_ext/enumerable'
 
 module BeardedTyrion
-  autoload :Source, File.expand_path('../bearded_tyrion/source', __FILE__)
-  autoload :Format, File.expand_path('../bearded_tyrion/format', __FILE__)
-  autoload :OptionsGroup, File.expand_path('../bearded_tyrion/options_group', __FILE__)
-  autoload :Content, File.expand_path('../bearded_tyrion/content', __FILE__)
-  autoload :Web, File.expand_path('../bearded_tyrion/web', __FILE__)
-  autoload :Twitter, File.expand_path('../bearded_tyrion/twitter', __FILE__)
-  autoload :User, File.expand_path('../bearded_tyrion/user', __FILE__)
+  autoload :Form, 'bearded_tyrion/form'
+  autoload :Downloader, 'bearded_tyrion/downloader'
+  autoload :Source, 'bearded_tyrion/source'
+  autoload :Format, 'bearded_tyrion/format'
+  autoload :OptionsGroup, 'bearded_tyrion/options_group'
+  autoload :Content, 'bearded_tyrion/content'
+  autoload :Web, 'bearded_tyrion/web'
+  autoload :Twitter, 'bearded_tyrion/twitter'
+  autoload :User, 'bearded_tyrion/user'
 
   class << self
     def consumer_key

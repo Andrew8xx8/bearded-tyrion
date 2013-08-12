@@ -3,6 +3,8 @@ require 'sinatra/base'
 require File.expand_path('../../bearded_tyrion', __FILE__)
 
 class BeardedTyrion::Web < Sinatra::Base
+  enable :raise_errors
+  enable :dump_errors
   set :haml, {:format => :html5, :attr_wrapper => '"'}
 
   set :public_folder, File.expand_path('../../../public', __FILE__)
@@ -37,7 +39,7 @@ class BeardedTyrion::Web < Sinatra::Base
   end
 
   get '/auth/failure' do
-    flash[:notice] = params[:message]
+    #flash[:notice] = params[:message]
     redirect '/'
   end
 
@@ -48,7 +50,9 @@ class BeardedTyrion::Web < Sinatra::Base
     source = BeardedTyrion::Source.new
     format = BeardedTyrion::Format.new
 
+    binding.pry
     haml :index, locals: {
+      form: BeardedTyrion::Form.new,
       current_user: current_user,
       content: content,
       source: source,
@@ -57,6 +61,17 @@ class BeardedTyrion::Web < Sinatra::Base
   end
 
   post '/download' do
-    ap params
+    content = BeardedTyrion::Content.new
+    source = BeardedTyrion::Source.new
+    format = BeardedTyrion::Format.new
+
+    content.fill_params params
+    source.fill_params params
+    format.fill_params params
+
+    downloader = BeardedTyrion::Downloader.new source, content, format
+
+    headers downloader.headers
+    body downloader.body
   end
 end

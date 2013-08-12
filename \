@@ -1,0 +1,15 @@
+require 'test_helper'
+
+class UserTest < ActiveSupport::TestCase
+  test "new user shoudl have token" do
+    user = User.new
+    assert user.token.present?
+  end
+
+  test "user should have method to change token" do
+    user = create :user
+    user.reset_token
+
+    assert user.token != token
+  end
+end

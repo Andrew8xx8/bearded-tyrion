@@ -12,7 +12,9 @@ class BeardedTyrion::Twitter
         :timeout => 10
       })
     end
+  end
 
+  def client
     Twitter
   end
 end

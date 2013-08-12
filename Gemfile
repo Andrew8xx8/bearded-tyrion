@@ -1,14 +1,25 @@
 source 'https://rubygems.org'
 
-gem 'omniauth'
-gem 'wrong'
-gem 'active_support'
-gem 'omniauth-twitter'
 gem 'rack', "~> 1.3.6"
-gem 'sinatra'
 gem 'unicorn'
+
+gem 'sinatra'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+
+gem 'activemodel'
+gem 'virtus'
+gem 'enumerize'
+
+gem 'haml'
+
 gem 'twitter'
 gem 'awesome_print'
-gem 'haml'
-gem 'minitest'
+
 gem 'rake'
+
+gem 'minitest'
+gem 'rack-test'
+gem 'webmock'
+gem 'pry'

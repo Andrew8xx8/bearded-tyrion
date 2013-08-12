@@ -5,6 +5,10 @@ class BeardedTyrion::OptionsGroup
     []
   end
 
+  def default_options
+    []
+  end
+
   def form_field_name
     "default"
   end
@@ -15,7 +19,9 @@ class BeardedTyrion::OptionsGroup
 
   def fill_params(form)
     params = form[form_field_name]
-    params.map! { |p| p.to_sym }
-    @fields = params & available_options
+    if params
+      params.map! { |p| p.to_sym }
+      @fields = params & available_options
+    end
   end
 end

@@ -11,4 +11,8 @@ class BeardedTyrion::Format < BeardedTyrion::OptionsGroup
   def form_field_name
     "format"
   end
+
+  def format(tweet)
+
+  end
 end
